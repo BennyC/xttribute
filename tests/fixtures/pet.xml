@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<pet>
+    <name>Bear</name>
+    <animal>Dog</animal>
+    <breed>Australian Labradoodle</breed>
+    <traits>
+        <trait>Friendly</trait>
+        <trait>Bonkers</trait>
+    </traits>
+</pet>

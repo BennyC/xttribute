@@ -1,0 +1,19 @@
+{
+    "name": "xttribute/xttribute",
+    "require-dev": {
+        "pestphp/pest": "^1.21"
+    },
+    "autoload": {
+        "psr-4": {
+            "Xttribute\\Xttribute\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "require": {
+        "ext-dom": "*"
+    }
+}
