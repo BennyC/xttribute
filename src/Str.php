@@ -5,6 +5,7 @@ namespace Xttribute\Xttribute;
 use DOMDocument;
 use DOMXPath;
 use RuntimeException;
+use Xttribute\Xttribute\Exceptions\IdentifyValueException;
 
 class Str implements Xttribute
 {
@@ -17,12 +18,12 @@ class Str implements Xttribute
         $xpath = new DOMXPath($doc);
         $nodeList = $xpath->query($this->xpath);
         if ($nodeList->count() > 1) {
-            throw new RuntimeException();
+            throw new IdentifyValueException();
         }
 
         $node = $nodeList->item(0);
-        if ($node->hasChildNodes()) {
-            throw new RuntimeException();
+        if ($node->hasChildNodes() && $node->childNodes->count() > 1) {
+            throw new IdentifyValueException();
         }
 
         return $node->nodeValue;
