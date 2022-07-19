@@ -1,21 +1,19 @@
 <?php
 
 use Xttribute\Xttribute\Exceptions\IdentifyValueException;
-use Xttribute\Xttribute\Str;
+use Xttribute\Xttribute\PathValue;
 
 test('find str value within document', function () {
-    $doc = new DOMDocument();
-    $doc->load(__DIR__ . '/fixtures/pet.xml');
-    $str = new Str('//pet/name');
+    $doc = loadXmlFixture('pet.xml');
+    $str = new PathValue('//pet/name');
 
     $value = $str->value($doc);
     expect($value)->toBe('Bear');
 });
 
 test('throws exception when node does not have simple value', function () {
-    $doc = new DOMDocument();
-    $doc->load(__DIR__ . '/fixtures/pet.xml');
+    $doc = loadXmlFixture('pet.xml');
 
-    $str = new Str('//pet/traits');
+    $str = new PathValue('//pet/traits');
     $value = $str->value($doc);
 })->throws(IdentifyValueException::class);
