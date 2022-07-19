@@ -8,7 +8,7 @@ use DOMNodeList;
 use DOMXPath;
 use Xttribute\Xttribute\Exceptions\IdentifyValueException;
 
-#[Attribute(Attribute::TARGET_PARAMETER)]
+#[Attribute(Attribute::TARGET_PROPERTY)]
 class PathValue implements Xttribute
 {
     public function __construct(
@@ -27,6 +27,10 @@ class PathValue implements Xttribute
         return $node->nodeValue;
     }
 
+    /**
+     * DOMNodeList must contain a single DOMNode which has no children,
+     * except a value
+     */
     private function requireSingleDOMNode(DOMNodeList $list): void
     {
         if ($list->count() > 1) {
