@@ -1,5 +1,7 @@
 {
     "name": "xttribute/xttribute",
+    "description": "XML to DTO, nicely!",
+    "license": ["MIT"],
     "require-dev": {
         "pestphp/pest": "^1.21"
     },
