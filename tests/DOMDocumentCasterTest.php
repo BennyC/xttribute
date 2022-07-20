@@ -1,6 +1,6 @@
 <?php
 
-use Fixtures\{Customer, NameAndAgePet, NamedPet};
+use Fixtures\{Customer, Marketing, MarketingPreferences, NameAndAgePet, NamedPet};
 use Xttribute\Xttribute\DOMDocumentCaster;
 
 test('simple path value sets property', function () {
@@ -41,5 +41,15 @@ test('will attributes cast to other classes and populate', function () {
         ->toEqual('John Doe')
         ->and($customer->address)
         ->not()
-        ->toBeNull();
+        ->toBeNull()
+        ->and($customer->address->lineOne)
+        ->toBe('1 Baker Street')
+        ->and($customer->marketing)
+        ->toBeInstanceOf(Marketing::class)
+        ->and($customer->marketing->id)
+        ->toEqual('1234')
+        ->and($customer->marketing->preferences)
+        ->toBeInstanceOf(MarketingPreferences::class)
+        ->and($customer->marketing->preferences->email)
+        ->toBeFalse();
 });

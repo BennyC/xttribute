@@ -1,6 +1,24 @@
 <?xml version="1.0"?>
 <customer>
     <name>John Doe</name>
+    <order>
+        <item id="1">
+            <name>Item</name>
+        </item>
+
+        <item id="2">
+            <name>Item</name>
+        </item>
+    </order>
+
+    <marketing>
+        <id>1234</id>
+        <preferences>
+            <sms>1</sms>
+            <email>0</email>
+        </preferences>
+    </marketing>
+
     <address>
         <lineOne>1 Baker Street</lineOne>
         <lineTwo>London</lineTwo>

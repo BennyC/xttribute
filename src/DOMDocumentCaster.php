@@ -18,7 +18,7 @@ class DOMDocumentCaster
     /**
      * @param DOMDocument $doc
      * @param T $castTo
-     * @return object
+     * @return T
      * @throws ReflectionException
      * @throws IdentifyValueException
      */
