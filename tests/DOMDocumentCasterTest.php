@@ -1,14 +1,7 @@
 <?php
 
+use Fixtures\{NameAndAgePet, NamedPet};
 use Xttribute\Xttribute\DOMDocumentCaster;
-use Xttribute\Xttribute\PathValue;
-
-class NamedPet {
-    public function __construct(
-        #[PathValue("/pet/name")]
-        public readonly string $name
-    ) {}
-}
 
 test('simple path value sets property', function () {
     $doc = loadXmlFixture('pet.xml');
@@ -21,15 +14,6 @@ test('simple path value sets property', function () {
         ->and($simple->name)
         ->toEqual('Bear');
 });
-
-class NameAndAgePet {
-    public function __construct(
-        #[PathValue("/pet/name")]
-        public readonly string $name,
-        #[PathValue("/pet/stats/@age")]
-        public readonly int $age
-    ) {}
-}
 
 test('attribute sets property value', function () {
     $doc = loadXmlFixture('pet.xml');

@@ -35,7 +35,7 @@
 
 function loadXmlFixture(string $file): DOMDocument {
     $doc = new DOMDocument();
-    $doc->load(__DIR__ . '/fixtures/' . $file);
+    $doc->load(__DIR__ . '/Fixtures/' . $file);
 
     return $doc;
 }

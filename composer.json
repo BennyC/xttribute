@@ -5,6 +5,11 @@
     "require-dev": {
         "pestphp/pest": "^1.21"
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Fixtures\\": "tests/Fixtures"
+        }
+    },
     "autoload": {
         "psr-4": {
             "Xttribute\\Xttribute\\": "src/"
