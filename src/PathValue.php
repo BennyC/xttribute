@@ -12,18 +12,28 @@ use Xttribute\Xttribute\Exceptions\IdentifyValueException;
 class PathValue implements Xttribute
 {
     public function __construct(
-        private readonly string $xpath
+        private readonly string $xpath,
+        private readonly string $castTo = 'string'
     ) {}
 
     /**
      * @throws IdentifyValueException
      */
-    public function value(DOMDocument $doc): string
+    public function value(DOMDocument $doc): mixed
     {
         $nodeList = (new DOMXPath($doc))->query($this->xpath);
-        $this->requireSingleDOMNode($nodeList);
 
+        return match ($this->castTo) {
+            'string' => $this->string($nodeList),
+            default  => null,
+        };
+    }
+
+    private function string(DOMNodeList $nodeList): string
+    {
+        $this->requireSingleDOMNode($nodeList);
         $node = $nodeList->item(0);
+
         return $node->nodeValue;
     }
 

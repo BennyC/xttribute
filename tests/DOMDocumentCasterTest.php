@@ -1,6 +1,6 @@
 <?php
 
-use Fixtures\{NameAndAgePet, NamedPet};
+use Fixtures\{Customer, NameAndAgePet, NamedPet};
 use Xttribute\Xttribute\DOMDocumentCaster;
 
 test('simple path value sets property', function () {
@@ -29,3 +29,17 @@ test('attribute sets property value', function () {
         ->toEqual(4);
 });
 
+test('will attributes cast to other classes and populate', function () {
+    $doc = loadXmlFixture('customer.xml');
+
+    $caster = new DOMDocumentCaster();
+    $customer = $caster->cast($doc, Customer::class);
+
+    expect($customer)
+        ->toBeInstanceOf(Customer::class)
+        ->and($customer->name)
+        ->toEqual('John Doe')
+        ->and($customer->address)
+        ->not()
+        ->toBeNull();
+});

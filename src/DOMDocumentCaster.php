@@ -8,6 +8,7 @@ use DOMDocument;
 use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionException;
+use Xttribute\Xttribute\Exceptions\IdentifyValueException;
 
 /**
  * @template T
@@ -19,20 +20,11 @@ class DOMDocumentCaster
      * @param T $castTo
      * @return object
      * @throws ReflectionException
+     * @throws IdentifyValueException
      */
     public function cast(DOMDocument $doc, string $castTo): object
     {
-        $values = [];
-        $ref = new ReflectionClass($castTo);
-
-        foreach ($ref->getProperties() as $prop) {
-            /** @var Xttribute $attr */
-            foreach ($prop->getAttributes(Xttribute::class, ReflectionAttribute::IS_INSTANCEOF) as $attrRef) {
-                $attr = $attrRef->newInstance();
-                $values[] = $attr->value($doc);
-            }
-        }
-
-        return $ref->newInstance(...$values);
+        $caster = new Caster('/*', $castTo);
+        return $caster->value($doc);
     }
 }
