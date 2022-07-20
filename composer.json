@@ -22,7 +22,7 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/pest",
+        "test": "vendor/bin/pest --ci",
         "phpcs": "vendor/bin/phpcs --standard=PSR12 src tests"
     },
     "require": {
