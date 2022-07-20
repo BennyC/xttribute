@@ -2,6 +2,10 @@
     "name": "xttribute/xttribute",
     "description": "XML to DTO, nicely!",
     "license": ["MIT"],
+    "require": {
+        "php": ">=8",
+        "ext-dom": "*"
+    },
     "require-dev": {
         "pestphp/pest": "^1.21",
         "squizlabs/php_codesniffer": "^3.7"
@@ -24,8 +28,5 @@
     "scripts": {
         "test": "vendor/bin/pest --ci",
         "phpcs": "vendor/bin/phpcs --standard=PSR12 src tests"
-    },
-    "require": {
-        "ext-dom": "*"
     }
 }
