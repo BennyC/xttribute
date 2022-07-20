@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<customer>
+    <name>John Doe</name>
+    <address>
+        <lineOne>1 Baker Street</lineOne>
+        <lineTwo>London</lineTwo>
+        <postCode>LL00LL</postCode>
+    </address>
+</customer>
