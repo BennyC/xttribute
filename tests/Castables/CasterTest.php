@@ -1,7 +1,7 @@
 <?php
 
 use Fixtures\NamedPet;
-use Xttribute\Xttribute\Caster;
+use Xttribute\Xttribute\Castables\Caster;
 
 test('it casts to an object', function () {
     $doc = loadXmlFixture('pet.xml');

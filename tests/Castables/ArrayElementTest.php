@@ -1,6 +1,6 @@
 <?php
 
-use Xttribute\Xttribute\ArrayElement;
+use Xttribute\Xttribute\Castables\ArrayElement;
 
 test('it can pull strings into array', function () {
     $doc = loadXmlFixture('pet.xml');

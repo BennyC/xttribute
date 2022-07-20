@@ -2,7 +2,7 @@
 
 namespace Fixtures;
 
-use Xttribute\Xttribute\PathValue;
+use Xttribute\Xttribute\Castables\PathValue;
 
 class NamedPet
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Xttribute\Xttribute;
+namespace Xttribute\Xttribute\Castables;
 
 use Attribute;
 use DOMDocument;
@@ -29,6 +29,9 @@ class PathValue implements Xttribute
         };
     }
 
+    /**
+     * @throws IdentifyValueException
+     */
     private function string(DOMNodeList $nodeList): string
     {
         $this->requireSingleDOMNode($nodeList);
@@ -40,6 +43,7 @@ class PathValue implements Xttribute
     /**
      * DOMNodeList must contain a single DOMNode which has no children,
      * except a value
+     * @throws IdentifyValueException
      */
     private function requireSingleDOMNode(DOMNodeList $list): void
     {

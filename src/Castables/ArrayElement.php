@@ -1,6 +1,6 @@
 <?php
 
-namespace Xttribute\Xttribute;
+namespace Xttribute\Xttribute\Castables;
 
 use DOMDocument;
 use DOMNode;

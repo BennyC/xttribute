@@ -1,8 +1,7 @@
 <?php
 
-use Fixtures\CustomerAddress;
+use Xttribute\Xttribute\Castables\PathValue;
 use Xttribute\Xttribute\Exceptions\IdentifyValueException;
-use Xttribute\Xttribute\PathValue;
 
 test('find str value within document', function () {
     $doc = loadXmlFixture('pet.xml');

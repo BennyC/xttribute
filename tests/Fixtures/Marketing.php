@@ -2,8 +2,8 @@
 
 namespace Fixtures;
 
-use Xttribute\Xttribute\Caster;
-use Xttribute\Xttribute\PathValue;
+use Xttribute\Xttribute\Castables\Caster;
+use Xttribute\Xttribute\Castables\PathValue;
 
 class Marketing
 {
