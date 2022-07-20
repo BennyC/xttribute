@@ -25,7 +25,8 @@ class Caster implements Xttribute
     public function __construct(
         private readonly string $xpath,
         private readonly string $castTo
-    ) {}
+    ) {
+    }
 
     /**
      * @param DOMDocument $doc

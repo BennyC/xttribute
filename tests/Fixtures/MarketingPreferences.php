@@ -11,5 +11,6 @@ class MarketingPreferences
         public readonly bool $sms,
         #[PathValue('//preferences/email')]
         public readonly bool $email,
-    ) {}
+    ) {
+    }
 }

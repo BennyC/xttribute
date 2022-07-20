@@ -13,5 +13,6 @@ class CustomerAddress
         public readonly string $lineTwo,
         #[PathValue('/address/postCode')]
         public readonly string $postCode,
-    ) {}
+    ) {
+    }
 }

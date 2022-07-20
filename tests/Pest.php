@@ -33,7 +33,8 @@
 |
 */
 
-function loadXmlFixture(string $file): DOMDocument {
+function loadXmlFixture(string $file): DOMDocument
+{
     $doc = new DOMDocument();
     $doc->load(__DIR__ . '/Fixtures/' . $file);
 

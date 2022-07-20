@@ -10,7 +10,8 @@ class ArrayElement implements Xttribute
 {
     public function __construct(
         private readonly string $xpath
-    ) {}
+    ) {
+    }
 
     public function value(DOMDocument $doc): array
     {

@@ -14,7 +14,8 @@ class PathValue implements Xttribute
     public function __construct(
         private readonly string $xpath,
         private readonly string $castTo = 'string'
-    ) {}
+    ) {
+    }
 
     /**
      * @throws IdentifyValueException

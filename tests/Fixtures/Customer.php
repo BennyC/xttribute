@@ -14,5 +14,6 @@ class Customer
         public readonly CustomerAddress $address,
         #[Caster('/customer/marketing', Marketing::class)]
         public readonly Marketing $marketing,
-    ) {}
+    ) {
+    }
 }

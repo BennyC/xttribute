@@ -12,5 +12,6 @@ class Marketing
         public readonly string $id,
         #[Caster('//marketing/preferences', MarketingPreferences::class)]
         public readonly MarketingPreferences $preferences,
-    ) {}
+    ) {
+    }
 }
