@@ -5,7 +5,6 @@ namespace Xttribute\Xttribute;
 use DOMDocument;
 use DOMNode;
 use DOMXPath;
-use Xttribute\Xttribute\Exceptions\IdentifyValueException;
 
 class ArrayElement implements Xttribute
 {
@@ -20,17 +19,13 @@ class ArrayElement implements Xttribute
 
         /** @var DOMNode $node */
         foreach ($nodeList as $node) {
-            $this->requireContainsOnlyText($node);
-            $values[] = $node->nodeValue;
+            $doc = new DOMDocument();
+            $doc->appendChild($doc->importNode($node, true));
+
+            $pathValue = new PathValue('/*');
+            $values[] = $pathValue->value($doc);
         }
 
         return $values;
-    }
-
-    private function requireContainsOnlyText(DOMNode $node): void
-    {
-        if ($node->hasChildNodes() && $node->childNodes->count() > 1) {
-            throw new IdentifyValueException();
-        }
     }
 }
