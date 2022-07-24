@@ -7,10 +7,13 @@ use DOMDocument;
 use DOMNodeList;
 use DOMXPath;
 use Xttribute\Xttribute\Exceptions\IdentifyValueException;
+use Xttribute\Xttribute\HasRequirements;
 
 #[Attribute(Attribute::TARGET_PROPERTY)]
 class PathValue implements Xttribute
 {
+    use HasRequirements;
+
     public function __construct(
         private readonly string $xpath,
         private readonly string $castTo = 'string'
@@ -35,26 +38,11 @@ class PathValue implements Xttribute
      */
     private function string(DOMNodeList $nodeList): string
     {
-        $this->requireSingleDOMNode($nodeList);
-        $node = $nodeList->item(0);
-
-        return $node->nodeValue;
-    }
-
-    /**
-     * DOMNodeList must contain a single DOMNode which has no children,
-     * except a value
-     * @throws IdentifyValueException
-     */
-    private function requireSingleDOMNode(DOMNodeList $list): void
-    {
-        if ($list->count() > 1) {
-            throw new IdentifyValueException();
-        }
-
-        $node = $list->item(0);
+        $node = $this->requireSingleDOMNode($nodeList);
         if ($node->hasChildNodes() && $node->childNodes->count() > 1) {
             throw new IdentifyValueException();
         }
+
+        return $node->nodeValue;
     }
 }

@@ -11,6 +11,7 @@ use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionException;
 use Xttribute\Xttribute\Exceptions\IdentifyValueException;
+use Xttribute\Xttribute\HasRequirements;
 
 /**
  * @template T
@@ -18,6 +19,8 @@ use Xttribute\Xttribute\Exceptions\IdentifyValueException;
 #[Attribute(Attribute::TARGET_PROPERTY)]
 class Caster implements Xttribute
 {
+    use HasRequirements;
+
     /**
      * @param string $xpath
      * @param T $castTo
@@ -54,18 +57,5 @@ class Caster implements Xttribute
         }
 
         return $ref->newInstance(...$values);
-    }
-
-    /**
-     * DOMNodeList must contain a single DOMNode which has no children,
-     * except a value
-     */
-    private function requireSingleDOMNode(DOMNodeList $list): DOMNode
-    {
-        if ($list->count() !== 1) {
-            throw new IdentifyValueException();
-        }
-
-        return $list->item(0);
     }
 }
