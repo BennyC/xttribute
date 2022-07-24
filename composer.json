@@ -8,7 +8,8 @@
     },
     "require-dev": {
         "pestphp/pest": "^1.21",
-        "squizlabs/php_codesniffer": "^3.7"
+        "squizlabs/php_codesniffer": "^3.7",
+        "php-parallel-lint/php-parallel-lint": "^1.3"
     },
     "autoload-dev": {
         "psr-4": {
@@ -27,6 +28,7 @@
     },
     "scripts": {
         "test": "vendor/bin/pest --ci",
-        "phpcs": "vendor/bin/phpcs --standard=PSR12 src tests"
+        "phpcs": "vendor/bin/phpcs --standard=PSR12 src tests",
+        "lint": "vendor/bin/parallel-lint --exclude .git --exclude vendor ."
     }
 }
