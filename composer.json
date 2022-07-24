@@ -3,7 +3,7 @@
     "description": "XML to DTO, nicely!",
     "license": ["MIT"],
     "require": {
-        "php": ">=8",
+        "php": ">=8.1",
         "ext-dom": "*"
     },
     "require-dev": {
