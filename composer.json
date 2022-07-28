@@ -28,7 +28,7 @@
     },
     "scripts": {
         "test": "vendor/bin/pest --ci",
-        "phpcs": "vendor/bin/phpcs --standard=PSR12 src tests",
+        "phpcs": "vendor/bin/phpcs --standard=phpcs.xml src tests",
         "lint": "vendor/bin/parallel-lint --exclude .git --exclude vendor ."
     }
 }
