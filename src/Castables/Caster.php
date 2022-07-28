@@ -4,7 +4,6 @@ namespace Xttribute\Xttribute\Castables;
 
 use Attribute;
 use DOMDocument;
-use DOMXPath;
 use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionException;
@@ -20,7 +19,6 @@ class Caster implements Xttribute
     use HasRequirements;
 
     /**
-     * @param string $xpath
      * @param T $castTo
      */
     public function __construct(
