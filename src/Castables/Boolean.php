@@ -19,7 +19,11 @@ class Boolean extends PathValue
         $strValue = parent::value($doc);
         $boolValue = filter_var($strValue, FILTER_VALIDATE_BOOL, FILTER_NULL_ON_FAILURE);
         if ($boolValue === null) {
-            throw new InvalidTypeException();
+            throw new InvalidTypeException(
+                "Unable to cast value to boolean",
+                "boolean",
+                $strValue,
+            );
         }
 
         return $boolValue;

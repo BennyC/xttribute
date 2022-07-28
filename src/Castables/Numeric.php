@@ -18,7 +18,11 @@ class Numeric extends PathValue
     {
         $strValue = parent::value($doc);
         if (! is_numeric($strValue)) {
-            throw new InvalidTypeException();
+            throw new InvalidTypeException(
+                "Unable to cast value to numeric value",
+                "numeric",
+                $strValue,
+            );
         }
 
         return $strValue;
