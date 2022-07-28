@@ -1,6 +1,6 @@
 <?php
 
-namespace Xttribute\Xttribute;
+namespace Xttribute\Xttribute\Traits;
 
 use DOMNode;
 use DOMNodeList;

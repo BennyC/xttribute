@@ -4,14 +4,12 @@ namespace Xttribute\Xttribute\Castables;
 
 use Attribute;
 use DOMDocument;
-use DOMNode;
-use DOMNodeList;
 use DOMXPath;
 use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionException;
 use Xttribute\Xttribute\Exceptions\IdentifyValueException;
-use Xttribute\Xttribute\HasRequirements;
+use Xttribute\Xttribute\Traits\HasRequirements;
 
 /**
  * @template T

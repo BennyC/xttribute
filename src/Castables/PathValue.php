@@ -7,7 +7,7 @@ use DOMDocument;
 use DOMNodeList;
 use DOMXPath;
 use Xttribute\Xttribute\Exceptions\IdentifyValueException;
-use Xttribute\Xttribute\HasRequirements;
+use Xttribute\Xttribute\Traits\HasRequirements;
 
 #[Attribute(Attribute::TARGET_PROPERTY)]
 class PathValue implements Xttribute
