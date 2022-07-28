@@ -24,8 +24,9 @@ class Caster implements Xttribute
      * @param T $castTo
      */
     public function __construct(
-        private readonly string $xpath,
-        private readonly string $castTo
+        public readonly string $xpath,
+        public readonly string $castTo,
+        public readonly bool $required = true,
     ) {
     }
 
@@ -37,13 +38,21 @@ class Caster implements Xttribute
      */
     public function value(DOMDocument $doc): mixed
     {
-        $values = [];
-        $ref = new ReflectionClass($this->castTo);
-        $node = $this->requireSingleDOMNode($doc, $this->xpath);
+        try {
+            $node = $this->requireSingleDOMNode($doc, $this->xpath);
+        } catch (IdentifyValueException $e) {
+            if ($this->required === true) {
+                throw $e;
+            }
+
+            return null;
+        }
 
         $scopedDoc = new DomDocument();
         $scopedDoc->appendChild($scopedDoc->importNode($node, true));
 
+        $values = [];
+        $ref = new ReflectionClass($this->castTo);
         foreach ($ref->getProperties() as $prop) {
             /** @var Xttribute $attr */
             foreach ($prop->getAttributes(Xttribute::class, ReflectionAttribute::IS_INSTANCEOF) as $attrRef) {
