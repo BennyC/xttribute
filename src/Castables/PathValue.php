@@ -15,8 +15,8 @@ class PathValue implements Xttribute
     use HasRequirements;
 
     public function __construct(
-        private readonly string $xpath,
-        private readonly string $castTo = 'string'
+        protected readonly string $xpath,
+        protected readonly string $castTo = 'string'
     ) {
     }
 
