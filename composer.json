@@ -27,7 +27,7 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/pest --ci",
+        "test": "XDEBUG_MODE=coverage vendor/bin/pest --ci --coverage --min=90",
         "phpcs": "vendor/bin/phpcs --standard=phpcs.xml src tests",
         "lint": "vendor/bin/parallel-lint --exclude .git --exclude vendor ."
     }
