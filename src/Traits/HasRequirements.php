@@ -4,19 +4,20 @@ namespace Xttribute\Xttribute\Traits;
 
 use DOMNode;
 use DOMNodeList;
-use Xttribute\Xttribute\Exceptions\IdentifyValueException;
+use Xttribute\Xttribute\Exceptions\UnableToFindSingleNodeException;
 
 trait HasRequirements
 {
     /**
      * DOMNodeList must contain a single DOMNode which has no children,
      * except a value
-     * @throws IdentifyValueException
+     * @throws UnableToFindSingleNodeException
      */
     private function requireSingleDOMNode(DOMNodeList $list): DOMNode
     {
         if ($list->count() !== 1) {
-            throw new IdentifyValueException();
+            throw (new UnableToFindSingleNodeException())
+                ->setDOMNodeList($list);
         }
 
         return $list->item(0);

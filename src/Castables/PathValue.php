@@ -8,6 +8,7 @@ use DOMNodeList;
 use DOMXPath;
 use Xttribute\Xttribute\Exceptions\IdentifyValueException;
 use Xttribute\Xttribute\Traits\HasRequirements;
+use Xttribute\Xttribute\Exceptions\MoreThanOneChildNodeException;
 
 #[Attribute(Attribute::TARGET_PROPERTY)]
 class PathValue implements Xttribute
@@ -40,7 +41,7 @@ class PathValue implements Xttribute
     {
         $node = $this->requireSingleDOMNode($nodeList);
         if ($node->hasChildNodes() && $node->childNodes->count() > 1) {
-            throw new IdentifyValueException();
+            throw new MoreThanOneChildNodeException();
         }
 
         return $node->nodeValue;
