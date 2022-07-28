@@ -39,9 +39,7 @@ class Caster implements Xttribute
     {
         $values = [];
         $ref = new ReflectionClass($this->castTo);
-        $nodeList = (new DOMXPath($doc))->query($this->xpath);
-
-        $node = $this->requireSingleDOMNode($nodeList);
+        $node = $this->requireSingleDOMNode($doc, $this->xpath);
 
         $scopedDoc = new DomDocument();
         $scopedDoc->appendChild($scopedDoc->importNode($node, true));

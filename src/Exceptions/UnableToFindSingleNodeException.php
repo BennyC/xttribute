@@ -2,20 +2,15 @@
 
 namespace Xttribute\Xttribute\Exceptions;
 
-use DOMNodeList;
+use DOMDocument;
 
 class UnableToFindSingleNodeException extends IdentifyValueException
 {
-    protected DOMNodeList $list;
-
-    public function setDOMNodeList(DOMNodeList $list): static
-    {
-        $this->list = $list;
-        return $this;
-    }
-
-    public function getDOMNodeList(): DOMNodeList
-    {
-        return $this->list;
+    public function __construct(
+        string $message,
+        public readonly DOMDocument $doc,
+        public readonly string $xpath,
+    ) {
+        parent::__construct($message);
     }
 }
