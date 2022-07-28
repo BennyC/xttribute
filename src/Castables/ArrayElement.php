@@ -9,7 +9,8 @@ use DOMXPath;
 class ArrayElement implements Xttribute
 {
     public function __construct(
-        private readonly string $xpath
+        private readonly string $xpath,
+        private readonly string $castTo = 'string'
     ) {
     }
 
@@ -23,10 +24,20 @@ class ArrayElement implements Xttribute
             $doc = new DOMDocument();
             $doc->appendChild($doc->importNode($node, true));
 
-            $pathValue = new PathValue('/*');
-            $values[] = $pathValue->value($doc);
+            $caster = $this->getCaster();
+            $values[] = $caster->value($doc);
         }
 
         return $values;
+    }
+
+    private function getCaster(): Xttribute
+    {
+        return match ($this->castTo) {
+            'string'  => new PathValue('/*'),
+            'numeric' => new Numeric('/*'),
+            'boolean' => new Boolean('/*'),
+            default   => new Caster('/*', $this->castTo),
+        };
     }
 }
