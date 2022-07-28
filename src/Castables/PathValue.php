@@ -4,9 +4,8 @@ namespace Xttribute\Xttribute\Castables;
 
 use Attribute;
 use DOMDocument;
-use DOMNodeList;
-use DOMXPath;
 use Xttribute\Xttribute\Exceptions\IdentifyValueException;
+use Xttribute\Xttribute\Exceptions\MoreThanOneChildNodeException;
 use Xttribute\Xttribute\Traits\HasRequirements;
 
 #[Attribute(Attribute::TARGET_PROPERTY)]
@@ -25,10 +24,8 @@ class PathValue implements Xttribute
      */
     public function value(DOMDocument $doc): mixed
     {
-        $nodeList = (new DOMXPath($doc))->query($this->xpath);
-
         return match ($this->castTo) {
-            'string' => $this->string($nodeList),
+            'string' => $this->string($doc, $this->xpath),
             default  => null,
         };
     }
@@ -36,11 +33,15 @@ class PathValue implements Xttribute
     /**
      * @throws IdentifyValueException
      */
-    private function string(DOMNodeList $nodeList): string
+    private function string(DOMDocument $doc, string $xpath): string
     {
-        $node = $this->requireSingleDOMNode($nodeList);
+        $node = $this->requireSingleDOMNode($doc, $xpath);
         if ($node->hasChildNodes() && $node->childNodes->count() > 1) {
-            throw new IdentifyValueException();
+            throw new MoreThanOneChildNodeException(
+                "DOMNode contains more than one child",
+                $doc,
+                $xpath,
+            );
         }
 
         return $node->nodeValue;
