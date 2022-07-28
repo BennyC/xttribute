@@ -2,10 +2,12 @@
 
 namespace Xttribute\Xttribute\Castables;
 
+use Attribute;
 use DOMDocument;
 use DOMNode;
 use DOMXPath;
 
+#[Attribute(Attribute::TARGET_PROPERTY)]
 class ArrayElement implements Xttribute
 {
     public function __construct(
