@@ -15,7 +15,7 @@ class PathValue implements Xttribute
 
     public function __construct(
         protected readonly string $xpath,
-        protected readonly string $castTo = 'string'
+        protected readonly bool $required = true,
     ) {
     }
 
@@ -24,23 +24,23 @@ class PathValue implements Xttribute
      */
     public function value(DOMDocument $doc): mixed
     {
-        return match ($this->castTo) {
-            'string' => $this->string($doc, $this->xpath),
-            default  => null,
-        };
-    }
+        try {
+            $node = $this->requireSingleDOMNode($doc, $this->xpath);
+        } catch (IdentifyValueException $e) {
+            // if the property is required, and it is flagged
+            // as required, bubble up the exception
+            if ($this->required === true) {
+                throw $e;
+            }
 
-    /**
-     * @throws IdentifyValueException
-     */
-    private function string(DOMDocument $doc, string $xpath): string
-    {
-        $node = $this->requireSingleDOMNode($doc, $xpath);
+            return null;
+        }
+
         if ($node->hasChildNodes() && $node->childNodes->count() > 1) {
             throw new MoreThanOneChildNodeException(
                 "DOMNode contains more than one child",
                 $doc,
-                $xpath,
+                $this->xpath,
             );
         }
 
