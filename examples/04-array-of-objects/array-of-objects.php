@@ -1,6 +1,6 @@
 <?php
 
-use Xttribute\Xttribute\Castables\Caster;
+use Xttribute\Xttribute\Castables\ArrayElement;
 use Xttribute\Xttribute\Castables\PathValue;
 use Xttribute\Xttribute\DOMDocumentCaster;
 
@@ -11,25 +11,25 @@ class Customer
     public function __construct(
         #[PathValue('/customer/name')]
         public readonly string $name,
-        #[Caster('/customer/address', Address::class)]
-        public readonly Address $address
+        #[ArrayElement('/customer/order/item', OrderItem::class)]
+        public readonly array $orderItems
     ) {
     }
 }
 
-class Address
+class OrderItem
 {
     public function __construct(
-        #[PathValue('/address/lineOne')]
-        public readonly string $lineOne,
-        #[PathValue('/address/lineTwo')]
-        public readonly string $lineTwo,
+        #[PathValue('/item/@id')]
+        public readonly string $id,
+        #[PathValue('/item/name')]
+        public readonly string $name,
     ) {
     }
 }
 
 $doc = new DOMDocument();
-$doc->loadXML(file_get_contents(__DIR__ . '/nested-objects.xml'));
+$doc->loadXML(file_get_contents(__DIR__ . '/array-of-objects.xml'));
 
 $caster = new DOMDocumentCaster();
 $customer = $caster->cast($doc, Customer::class);

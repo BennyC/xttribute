@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<pet>
+    <name>Bear</name>
+    <animal>Dog</animal>
+    <breed>Australian Labradoodle</breed>
+    <stats age="4.0" />
+    <traits>
+        <trait>Friendly</trait>
+        <trait>Bonkers</trait>
+    </traits>
+</pet>
