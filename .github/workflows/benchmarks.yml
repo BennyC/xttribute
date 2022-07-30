@@ -1,4 +1,4 @@
-name: PHP Checks
+name: Benchmark xttribute/xttribute
 
 on:
   push:
@@ -8,15 +8,14 @@ permissions:
   contents: read
 
 jobs:
-  test:
+  benchmark:
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate --strict
+    - run: composer validate --strict
 
     - name: Cache Composer packages
       id: composer-cache
