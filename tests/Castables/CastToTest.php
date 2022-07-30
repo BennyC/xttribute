@@ -1,12 +1,12 @@
 <?php
 
 use Fixtures\NamedPet;
-use Xttribute\Xttribute\Castables\Caster;
+use Xttribute\Xttribute\Castables\CastTo;
 use Xttribute\Xttribute\Exceptions\IdentifyValueException;
 
 test('it casts to an object', function () {
     $doc = loadXmlFixture('pet.xml');
-    $caster = new Caster('/pet', NamedPet::class);
+    $caster = new CastTo('/pet', NamedPet::class);
     $pet = $caster->value($doc);
 
     expect($pet)
@@ -17,7 +17,7 @@ test('it casts to an object', function () {
 
 test('it throws exception when property is required', function () {
     $doc = loadXmlFixture('empty.xml');
-    $caster = new Caster(
+    $caster = new CastTo(
         '/scenarios/does-not-exist',
         castTo: NamedPet::class,
         required: true
@@ -28,7 +28,7 @@ test('it throws exception when property is required', function () {
 
 test('it handle nulls when property is not required', function () {
     $doc = loadXmlFixture('empty.xml');
-    $caster = new Caster(
+    $caster = new CastTo(
         '/scenarios/does-not-exist',
         castTo: NamedPet::class,
         required: false

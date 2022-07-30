@@ -6,7 +6,7 @@ namespace Xttribute\Xttribute;
 
 use DOMDocument;
 use ReflectionException;
-use Xttribute\Xttribute\Castables\Caster;
+use Xttribute\Xttribute\Castables\CastTo;
 use Xttribute\Xttribute\Exceptions\IdentifyValueException;
 
 /**
@@ -23,7 +23,7 @@ class DOMDocumentCaster
      */
     public function cast(DOMDocument $doc, string $castTo): object
     {
-        $caster = new Caster('/*', $castTo);
+        $caster = new CastTo('/*', $castTo);
         return $caster->value($doc);
     }
 }

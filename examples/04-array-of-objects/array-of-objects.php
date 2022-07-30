@@ -1,7 +1,7 @@
 <?php
 
-use Xttribute\Xttribute\Castables\ArrayElement;
-use Xttribute\Xttribute\Castables\PathValue;
+use Xttribute\Xttribute\Castables\ArrayOf;
+use Xttribute\Xttribute\Castables\Str;
 use Xttribute\Xttribute\DOMDocumentCaster;
 
 require __DIR__ . '/../../vendor/autoload.php';
@@ -9,9 +9,9 @@ require __DIR__ . '/../../vendor/autoload.php';
 class Customer
 {
     public function __construct(
-        #[PathValue('/customer/name')]
+        #[Str('/customer/name')]
         public readonly string $name,
-        #[ArrayElement('/customer/order/item', OrderItem::class)]
+        #[ArrayOf('/customer/order/item', OrderItem::class)]
         public readonly array $orderItems
     ) {
     }
@@ -20,9 +20,9 @@ class Customer
 class OrderItem
 {
     public function __construct(
-        #[PathValue('/item/@id')]
+        #[Str('/item/@id')]
         public readonly string $id,
-        #[PathValue('/item/name')]
+        #[Str('/item/name')]
         public readonly string $name,
     ) {
     }

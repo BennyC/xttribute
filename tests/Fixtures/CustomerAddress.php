@@ -2,16 +2,16 @@
 
 namespace Fixtures;
 
-use Xttribute\Xttribute\Castables\PathValue;
+use Xttribute\Xttribute\Castables\Str;
 
 class CustomerAddress
 {
     public function __construct(
-        #[PathValue('/address/lineOne')]
+        #[Str('/address/lineOne')]
         public readonly string $lineOne,
-        #[PathValue('/address/lineTwo')]
+        #[Str('/address/lineTwo')]
         public readonly string $lineTwo,
-        #[PathValue('/address/postCode')]
+        #[Str('/address/postCode')]
         public readonly string $postCode,
     ) {
     }

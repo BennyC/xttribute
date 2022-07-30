@@ -11,7 +11,7 @@ use Xttribute\Xttribute\Exceptions\MoreThanOneChildNodeException;
 use Xttribute\Xttribute\Traits\HasRequirements;
 
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class PathValue implements Xttribute
+class Str implements Xttribute
 {
     use HasRequirements;
 

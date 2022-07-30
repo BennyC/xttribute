@@ -14,7 +14,7 @@ use Xttribute\Xttribute\Traits\HasRequirements;
  * @template T
  */
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class Caster implements Xttribute
+class CastTo implements Xttribute
 {
     use HasRequirements;
 
@@ -52,8 +52,8 @@ class Caster implements Xttribute
         $values = [];
         $ref = new ReflectionClass($this->castTo);
         foreach ($ref->getProperties() as $prop) {
-            /** @var Xttribute $attr */
             foreach ($prop->getAttributes(Xttribute::class, ReflectionAttribute::IS_INSTANCEOF) as $attrRef) {
+                /** @var Xttribute $attr */
                 $attr = $attrRef->newInstance();
                 $values[] = $attr->value($scopedDoc);
             }

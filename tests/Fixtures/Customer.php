@@ -2,17 +2,17 @@
 
 namespace Fixtures;
 
-use Xttribute\Xttribute\Castables\Caster;
-use Xttribute\Xttribute\Castables\PathValue;
+use Xttribute\Xttribute\Castables\CastTo;
+use Xttribute\Xttribute\Castables\Str;
 
 class Customer
 {
     public function __construct(
-        #[PathValue('/customer/name')]
+        #[Str('/customer/name')]
         public readonly string $name,
-        #[Caster('/customer/address', CustomerAddress::class)]
+        #[CastTo('/customer/address', CustomerAddress::class)]
         public readonly CustomerAddress $address,
-        #[Caster('/customer/marketing', Marketing::class)]
+        #[CastTo('/customer/marketing', Marketing::class)]
         public readonly Marketing $marketing,
     ) {
     }
