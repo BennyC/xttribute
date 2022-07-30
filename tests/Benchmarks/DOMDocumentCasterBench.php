@@ -5,11 +5,12 @@ namespace Benchmarks;
 use DOMDocument;
 use DOMXPath;
 use Fixtures\NameAndAgePet;
+use SimpleXMLElement;
 use Xttribute\Xttribute\DOMDocumentCaster;
 
 class DOMDocumentCasterBench
 {
-    public function benchDOMDocumentCaster()
+    public function benchDOMDocumentCaster(): void
     {
         $doc = new DOMDocument();
         $caster = new DOMDocumentCaster();
@@ -18,7 +19,7 @@ class DOMDocumentCasterBench
         $pet = $caster->cast($doc, NameAndAgePet::class);
     }
 
-    public function benchDOMDocumentManualCastingWithXPath()
+    public function benchDOMDocumentManualCastingWithXPath(): void
     {
         $doc = new DOMDocument();
         $doc->load(__DIR__ . '/../Fixtures/pet.xml');
@@ -28,6 +29,16 @@ class DOMDocumentCasterBench
         $pet = new NameAndAgePet(
             $name->item(0)->nodeValue,
             $age->item(0)->nodeValue,
+        );
+    }
+
+    public function benchSimpleXML(): void
+    {
+        $xml = simplexml_load_file(__DIR__ . '/../Fixtures/pet.xml');
+
+        $pet = new NameAndAgePet(
+            $xml->name,
+            (int) $xml->xpath('/pet/stats/@age'),
         );
     }
 }

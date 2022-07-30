@@ -7,6 +7,7 @@
         "ext-dom": "*"
     },
     "require-dev": {
+        "ext-simplexml": "*",
         "pestphp/pest": "^1.21",
         "squizlabs/php_codesniffer": "^3.7",
         "php-parallel-lint/php-parallel-lint": "^1.3",
