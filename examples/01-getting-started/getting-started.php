@@ -1,7 +1,7 @@
 <?php
 
 use Xttribute\Xttribute\Castables\Numeric;
-use Xttribute\Xttribute\Castables\PathValue;
+use Xttribute\Xttribute\Castables\Str;
 use Xttribute\Xttribute\DOMDocumentCaster;
 
 require __DIR__ . '/../../vendor/autoload.php';
@@ -9,7 +9,7 @@ require __DIR__ . '/../../vendor/autoload.php';
 class Pet
 {
     public function __construct(
-        #[PathValue('/pet/name')]
+        #[Str('/pet/name')]
         public readonly string $name,
         #[Numeric('/pet/stats/@age')]
         public readonly int $age

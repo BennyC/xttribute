@@ -2,12 +2,12 @@
 
 namespace Fixtures;
 
-use Xttribute\Xttribute\Castables\PathValue;
+use Xttribute\Xttribute\Castables\Str;
 
 class NamedPet
 {
     public function __construct(
-        #[PathValue("/pet/name")]
+        #[Str("/pet/name")]
         public readonly string $name
     ) {
     }

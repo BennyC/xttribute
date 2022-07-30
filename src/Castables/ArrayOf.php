@@ -10,7 +10,7 @@ use DOMNode;
 use DOMXPath;
 
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class ArrayElement implements Xttribute
+class ArrayOf implements Xttribute
 {
     public function __construct(
         private readonly string $xpath,
@@ -38,10 +38,10 @@ class ArrayElement implements Xttribute
     private function getCaster(): Xttribute
     {
         return match ($this->castTo) {
-            'string'  => new PathValue('/*'),
+            'string'  => new Str('/*'),
             'numeric' => new Numeric('/*'),
             'boolean' => new Boolean('/*'),
-            default   => new Caster('/*', $this->castTo),
+            default   => new CastTo('/*', $this->castTo),
         };
     }
 }

@@ -10,13 +10,13 @@ use Xttribute\Xttribute\Exceptions\IdentifyValueException;
 use Xttribute\Xttribute\Exceptions\InvalidTypeException;
 
 #[Attribute(Attribute::TARGET_PARAMETER)]
-class Boolean extends PathValue
+class Boolean extends Str
 {
     /**
      * @throws InvalidTypeException
      * @throws IdentifyValueException
      */
-    public function value(DOMDocument $doc): mixed
+    public function value(DOMDocument $doc): bool
     {
         $strValue = parent::value($doc);
         $boolValue = filter_var($strValue, FILTER_VALIDATE_BOOL, FILTER_NULL_ON_FAILURE);

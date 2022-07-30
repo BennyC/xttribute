@@ -10,7 +10,7 @@ use Xttribute\Xttribute\Exceptions\IdentifyValueException;
 use Xttribute\Xttribute\Exceptions\InvalidTypeException;
 
 #[Attribute(Attribute::TARGET_PROPERTY)]
-class Numeric extends PathValue
+class Numeric extends Str
 {
     /**
      * @throws InvalidTypeException

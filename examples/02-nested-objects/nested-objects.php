@@ -1,7 +1,7 @@
 <?php
 
-use Xttribute\Xttribute\Castables\Caster;
-use Xttribute\Xttribute\Castables\PathValue;
+use Xttribute\Xttribute\Castables\CastTo;
+use Xttribute\Xttribute\Castables\Str;
 use Xttribute\Xttribute\DOMDocumentCaster;
 
 require __DIR__ . '/../../vendor/autoload.php';
@@ -9,9 +9,9 @@ require __DIR__ . '/../../vendor/autoload.php';
 class Customer
 {
     public function __construct(
-        #[PathValue('/customer/name')]
+        #[Str('/customer/name')]
         public readonly string $name,
-        #[Caster('/customer/address', Address::class)]
+        #[CastTo('/customer/address', Address::class)]
         public readonly Address $address
     ) {
     }
@@ -20,9 +20,9 @@ class Customer
 class Address
 {
     public function __construct(
-        #[PathValue('/address/lineOne')]
+        #[Str('/address/lineOne')]
         public readonly string $lineOne,
-        #[PathValue('/address/lineTwo')]
+        #[Str('/address/lineTwo')]
         public readonly string $lineTwo,
     ) {
     }

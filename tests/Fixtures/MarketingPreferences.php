@@ -2,14 +2,14 @@
 
 namespace Fixtures;
 
-use Xttribute\Xttribute\Castables\PathValue;
+use Xttribute\Xttribute\Castables\Str;
 
 class MarketingPreferences
 {
     public function __construct(
-        #[PathValue('//preferences/sms')]
+        #[Str('//preferences/sms')]
         public readonly bool $sms,
-        #[PathValue('//preferences/email')]
+        #[Str('//preferences/email')]
         public readonly bool $email,
     ) {
     }

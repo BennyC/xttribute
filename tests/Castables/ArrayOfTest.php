@@ -2,11 +2,11 @@
 
 use Fixtures\OrderItem;
 use Pest\Expectation;
-use Xttribute\Xttribute\Castables\ArrayElement;
+use Xttribute\Xttribute\Castables\ArrayOf;
 
 test('it can pull strings into array', function () {
     $doc = loadXmlFixture('pet.xml');
-    $caster = new ArrayElement('/pet/traits/trait');
+    $caster = new ArrayOf('/pet/traits/trait');
     $values = $caster->value($doc);
 
     expect($values)
@@ -16,7 +16,7 @@ test('it can pull strings into array', function () {
 
 test('it can pull complex objects into array', function () {
     $doc = loadXmlFixture('customer.xml');
-    $caster = new ArrayElement('/customer/order/item', OrderItem::class);
+    $caster = new ArrayOf('/customer/order/item', OrderItem::class);
     $values = $caster->value($doc);
 
     expect($values)
