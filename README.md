@@ -11,7 +11,7 @@ xttribute will make dealing with XML a breeze! DOMDocuments can now be cast to c
 
 ### Installation
 
-Use the Composer to install
+Use [composer](https://getcomposer.org/) to install
 
 ```shell
 composer require xttribute/xttribute
