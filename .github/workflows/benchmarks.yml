@@ -1,7 +1,8 @@
 name: PHP Checks
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [ "benchmarks" ]
 
 permissions:
   contents: read
@@ -30,4 +31,4 @@ jobs:
       run: composer install --prefer-dist --no-progress
 
     - name: Run benchmarks
-      run: ./vendor/bin/phpbench run tests/Benchmarks
+      run: composer bench

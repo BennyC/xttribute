@@ -30,6 +30,7 @@
     "scripts": {
         "test": "XDEBUG_MODE=coverage vendor/bin/pest --ci --coverage --min=90",
         "phpcs": "vendor/bin/phpcs --standard=phpcs.xml src tests",
-        "lint": "vendor/bin/parallel-lint --exclude .git --exclude vendor ."
+        "lint": "vendor/bin/parallel-lint --exclude .git --exclude vendor .",
+        "bench": "vendor/bin/phpbench run --iterations=10 --warmup=5 --report=aggregate tests/Benchmarks"
     }
 }
