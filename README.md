@@ -31,7 +31,7 @@ Given the following XML
 ```
 
 We can translate this easily to the following class with some attributes! 
-```injectablephp
+```php
 use Xttribute\Xttribute\Castable\Str;
 
 class Note 
@@ -52,7 +52,7 @@ class Note
 
 Then we can run it through our ```DomDocumentCaster``` and get our hydrated object!
 
-```injectablephp
+```php
 use Xttribute\Xttribute\DOMDocumentCaster;
 
 // $source to be populated, however you're receiving your XML
