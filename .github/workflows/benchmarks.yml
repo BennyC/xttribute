@@ -1,8 +1,7 @@
 name: Benchmark xttribute/xttribute
 
 on:
-  push:
-    branches: [ "benchmarks" ]
+  workflow_dispatch:
 
 permissions:
   contents: read
