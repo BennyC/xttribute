@@ -9,12 +9,10 @@ use ReflectionException;
 use Xttribute\Xttribute\Castables\CastTo;
 use Xttribute\Xttribute\Exceptions\IdentifyValueException;
 
-/**
- * @template T of object
- */
 class DOMDocumentCaster
 {
     /**
+     * @template T of object
      * @param DOMDocument $doc
      * @param class-string<T> $castTo
      * @return T
