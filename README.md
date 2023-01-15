@@ -32,7 +32,7 @@ Given the following XML
 
 We can translate this easily to the following class with some attributes! 
 ```php
-use Xttribute\Xttribute\Castable\Str;
+use Xttribute\Xttribute\Castables\Str;
 
 class Note 
 {
