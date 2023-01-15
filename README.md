@@ -55,13 +55,16 @@ Then we can run it through our ```DomDocumentCaster``` and get our hydrated obje
 ```php
 use Xttribute\Xttribute\DOMDocumentCaster;
 
-// $source to be populated, however you're receiving your XML
+// populate $source here with however you're receiving your XML
 
-$xml = new DOMDocument();
-$xml->loadXML($source);
+$doc = new DOMDocument();
+$doc->loadXML($source);
 
 $caster = new DOMDocumentCaster();
-$caster->cast($doc, Note::class)
+/** @var Note $note */
+$note = $caster->cast($doc, Note::class);
+
+// Work with $note hydrated DTO...
 ```
 
 Other ways of using this package can be found in our [examples](https://github.com/BennyC/xttribute/tree/main/examples).
