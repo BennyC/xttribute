@@ -4,10 +4,12 @@
     <order>
         <item id="1">
             <name>Item</name>
+            <type>Candy</type>
         </item>
 
         <item id="2">
             <name>Item</name>
+            <type>Gum</type>
         </item>
     </order>
 
