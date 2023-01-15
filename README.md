@@ -61,7 +61,6 @@ $doc = new DOMDocument();
 $doc->loadXML($source);
 
 $caster = new DOMDocumentCaster();
-/** @var Note $note */
 $note = $caster->cast($doc, Note::class);
 
 // Work with $note hydrated DTO...
