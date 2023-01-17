@@ -49,7 +49,7 @@ class Enum implements Xttribute
 
         if (!is_a($this->enumClass, \BackedEnum::class, true)) {
             throw new InvalidTypeException(
-                '`castTo` is not a \\BackedEnum',
+                '`enumClass` is not a \\BackedEnum',
                 $this->enumClass,
                 $node->nodeValue
             );
