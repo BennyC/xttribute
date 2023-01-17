@@ -34,6 +34,7 @@ class Enum implements Xttribute
      * @return T
      * @throws IdentifyValueException
      * @throws InvalidTypeException
+     * @throws \ReflectionException
      */
     public function value(DOMDocument $doc): mixed
     {
@@ -55,8 +56,11 @@ class Enum implements Xttribute
             );
         }
 
+        $backingType = (string) (new \ReflectionEnum($this->enumClass))->getBackingType();
         try {
-            return $this->enumClass::from($node->nodeValue);
+            return $this->enumClass::from(
+                $backingType === 'int' ? (int) $node->nodeValue : $node->nodeValue
+            );
         } catch (\ValueError $e) {
             if ($this->required) {
                 throw new InvalidTypeException(
@@ -65,6 +69,7 @@ class Enum implements Xttribute
                     $node->nodeValue
                 );
             }
+
             return null;
         }
     }
