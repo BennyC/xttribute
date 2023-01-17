@@ -2,8 +2,10 @@
 <pet>
     <name>Bear</name>
     <animal>Dog</animal>
+    <color>Brown</color>
     <breed>Australian Labradoodle</breed>
     <stats age="4.0" />
+    <is_cute>1</is_cute>
     <traits>
         <trait>Friendly</trait>
         <trait>Bonkers</trait>
