@@ -9,7 +9,7 @@ use DOMDocument;
 use Xttribute\Xttribute\Exceptions\IdentifyValueException;
 use Xttribute\Xttribute\Exceptions\InvalidTypeException;
 
-#[Attribute(Attribute::TARGET_PARAMETER)]
+#[Attribute(Attribute::TARGET_PROPERTY)]
 class Boolean extends Str
 {
     /**
