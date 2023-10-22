@@ -19,6 +19,10 @@ class Numeric extends Str
     public function value(DOMDocument $doc): mixed
     {
         $strValue = parent::value($doc);
+        if ($this->required === false && empty($strValue)) {
+            return null;
+        }
+
         if (! is_numeric($strValue)) {
             throw new InvalidTypeException(
                 "Unable to cast value to numeric value",
